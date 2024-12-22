@@ -1,0 +1,16 @@
+.element{
+ padding: 2px;
+}
+.equle{
+    margin: 0px 20px;
+}
+.viewer{
+    width: 150px;
+    font-size: larger;
+    font-weight: bold;
+    padding: 10px;
+    background: #f4f4f4;
+}
+.result {
+    color: #81BFDA;
+}

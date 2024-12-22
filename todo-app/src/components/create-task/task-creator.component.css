@@ -1,0 +1,17 @@
+.task-creator-body input{
+    display: block;
+    width: 100%;
+}
+.btn-submit{
+    background: #1d6340;
+    color: aliceblue;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 5px 0;
+    border: none;
+}
+#task-title , #task-body {
+    margin: 10px 0;
+    border-radius: 5px;
+    padding: 10px 5px;
+}

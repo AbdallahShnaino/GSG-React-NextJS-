@@ -1,0 +1,26 @@
+.remove , .completed-mark ,.task-data{
+  display: inline-block;
+}
+
+.card{
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid green;
+    margin: 5px 20px;
+}
+.remove img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.remove{
+    background: transparent;
+    border: none;
+}
+.title{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+

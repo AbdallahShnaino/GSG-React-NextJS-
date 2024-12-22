@@ -1,0 +1,8 @@
+.block{
+  display: inline-block;
+}
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
