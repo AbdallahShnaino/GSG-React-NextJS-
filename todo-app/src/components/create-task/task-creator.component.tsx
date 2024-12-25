@@ -1,4 +1,4 @@
-import { Task,TASK_TYPE } from "../../types"
+import { Task,TASK_STATUS,TASK_TYPE } from "../../types"
 import "./task-creator.component.css"
 
 function generateUID() {
@@ -12,21 +12,23 @@ function generateUID() {
 interface ITaskCreator {
   onTaskCreated: (newTask:Task) => void
 }
-function TaskCreator(props:ITaskCreator) {
+function TaskCreator({onTaskCreated}:ITaskCreator) {
   let onTaskSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     let taskTitle = e.currentTarget['task-title'].value
     let taskBody = e.currentTarget['task-body'].value
-    let newTask:Task = {id:generateUID(),title:taskTitle,body:taskBody,status:TASK_TYPE.IN_PROGRESS} 
+    let status = e.currentTarget['task-status'].checked
+    let newTask:Task = {id:generateUID(),title:taskTitle,body:taskBody,type:TASK_TYPE.IN_PROGRESS,status:status? TASK_STATUS.AURGENT:TASK_STATUS.NORMAL} 
     e.currentTarget['task-title'].value = ''
     e.currentTarget['task-body'].value = ''
-    props.onTaskCreated(newTask)
+    onTaskCreated(newTask)
   } 
     return <>
     <form onSubmit={onTaskSubmit} className="task-creator-body">
       <input id="task-title" type="text" name="task-title" placeholder="Note Title"/>
       <input id="task-body" type="text" name="task-body" placeholder="Note Body" />
       <input className="btn-submit" type="submit" />
+      <div className="completed-mark">Mark as aurgant<input type="checkbox" name="task-status"/></div>
     </form>
     </>
 }

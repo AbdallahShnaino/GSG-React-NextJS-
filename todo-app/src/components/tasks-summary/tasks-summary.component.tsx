@@ -4,8 +4,7 @@ interface ITaskSummary {
     completedTaskNum:number;
     createdTaskNum:number;
 }
-function TaskSummary(props:ITaskSummary) {
-    let {completedTaskNum,createdTaskNum} = props
+function TaskSummary({completedTaskNum,createdTaskNum}:ITaskSummary) {
     return <>
       <div className="container">
         <div className="block" >

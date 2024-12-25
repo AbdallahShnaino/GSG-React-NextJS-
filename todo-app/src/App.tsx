@@ -6,7 +6,7 @@ import TaskSummary from './components/tasks-summary/tasks-summary.component';
 import { Task, TASK_TYPE } from './types';
 
 const today = new Date();
-const options = { weekday: 'long', day: '2-digit', month: 'short' };
+const options:Intl.DateTimeFormatOptions = { weekday: 'long', day: '2-digit', month: 'short' };
 const formattedDate = today.toLocaleDateString('en-GB', options);
 
 let TASKS_LIST:Task[] = [];
@@ -22,14 +22,14 @@ function App() {
     console.log('onTaskCreated createdTasks',createdTasks)
 
   }
-  let onCompltetTask = (taskId:string,status:boolean) => {
+  let onCompltetTask = (taskId:string,type:boolean) => {
     let index = taskList.findIndex((v) => v.id == taskId)
-    if(status == true) 
+    if(type == true) 
       setCompltetdTasks(_ => compltetdTasks++)
     else{
       taskList.length>0?setCompltetdTasks(_ => compltetdTasks--):setCompltetdTasks(_ => 0)
     }
-    let obj = {...taskList[index],status:status==true?TASK_TYPE.FINISHED:TASK_TYPE.IN_PROGRESS}
+    let obj = {...taskList[index],type:type==true?TASK_TYPE.FINISHED:TASK_TYPE.IN_PROGRESS}
     let arr = [...taskList]
     arr[index] = obj
     setTaskList(_ => arr)
@@ -37,11 +37,12 @@ function App() {
     console.log('onCompltetTask compltetdTasks',compltetdTasks)
   }
   let onDeleteTask = (taskId:string) => {
+  
     let index = taskList.findIndex((v) => v.id == taskId)
     let arr = [...taskList]
     arr.splice(index,1)
-    setTaskList(_ => arr)
-    console.log('onDeleteTask arr',arr)
+    setTaskList(_ => arr) 
+   console.log('onDeleteTask arr',arr)
 
   }
   
