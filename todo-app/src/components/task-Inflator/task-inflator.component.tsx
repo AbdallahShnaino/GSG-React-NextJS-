@@ -1,4 +1,4 @@
-import { Task, TASK_STATUS, TASK_TYPE } from "../../types"
+import { Task, TASK_STATUS } from "../../types"
 import "./task-inflator.component.css"
 
 interface ITaskInflator {
