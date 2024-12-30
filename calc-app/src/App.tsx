@@ -70,12 +70,9 @@ function CalcBody() {
     setCalcSentence(() => statementHost);
   };
   const onGetResult = () => {
-    let result = calculateExpression(statementHost);
-    setResult(() => result.toString());
-    statementHost = "";
-    setCalcSentence(() => "");
+    let resultToView = calculateExpression(statementHost);
+    setResult(() => resultToView.toString());
   };
-  useEffect(()=>{},[])
 
   return (
     <>

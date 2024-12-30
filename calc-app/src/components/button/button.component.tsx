@@ -12,7 +12,7 @@ function Button(props: BtnData) {
   if (type == BUTTON_TYPE.NUMBER) {
     return (
       <button
-        onClick={() => onChangeCalcStatement?.(value)}
+        onClick={() =>  onChangeCalcStatement?.(value)}
         className="btn bg-color-num"
       >
         {value}
