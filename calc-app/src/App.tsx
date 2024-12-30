@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BUTTON_TYPE, calculateExpression } from "./types";
 import Viewer from "./components/viewer/viewer.component";
 import Button from "./components/button/button.component";
