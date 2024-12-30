@@ -20,30 +20,29 @@ function App() {
   let [createdTasks, setCreatedTasks] = useState<number>(0);
   let onTaskCreated = (newTask: Task) => {
     let newList = [...taskList, newTask];
-    setTaskList((_) => newList);
-    setCreatedTasks((_) => createdTasks++);
+    setTaskList(() => newList);
+    setCreatedTasks(() => createdTasks++);
   };
   let onCompleteTask = (taskId: string, type: boolean) => {
-    let index = taskList.findIndex((v) => v.id == taskId);
-    if (type == true) setCompletedTasks((_) => completedTasks++);
-    else {
-      taskList.length > 0
-        ? setCompletedTasks((_) => completedTasks--)
-        : setCompletedTasks((_) => 0);
+    const index = taskList.findIndex((task) => task.id === taskId);
+    if (type) {
+      setCompletedTasks((prev) => prev + 1);
+    } else {
+      setCompletedTasks((prev) => (taskList.length > 0 ? prev - 1 : 0));
     }
-    let obj = {
+    const updatedTask = {
       ...taskList[index],
-      type: type == true ? TASK_TYPE.FINISHED : TASK_TYPE.IN_PROGRESS,
+      type: type ? TASK_TYPE.FINISHED : TASK_TYPE.IN_PROGRESS,
     };
-    let arr = [...taskList];
-    arr[index] = obj;
-    setTaskList((_) => arr);
+    const updatedTaskList = [...taskList];
+    updatedTaskList[index] = updatedTask;
+    setTaskList(updatedTaskList);
   };
   let onDeleteTask = (taskId: string) => {
     let index = taskList.findIndex((v) => v.id == taskId);
     let arr = [...taskList];
     arr.splice(index, 1);
-    setTaskList((_) => arr);
+    setTaskList(() => arr);
   };
 
   return (
@@ -64,4 +63,3 @@ function App() {
 }
 
 export default App;
-
