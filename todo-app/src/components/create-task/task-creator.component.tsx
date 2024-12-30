@@ -14,7 +14,6 @@ interface ITaskCreator {
   onTaskCreated: (newTask: Task) => void;
 }
 function TaskCreator({ onTaskCreated }: ITaskCreator) {
-  
   let onTaskSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let taskTitle = e.currentTarget["task-title"].value;
@@ -30,7 +29,6 @@ function TaskCreator({ onTaskCreated }: ITaskCreator) {
     e.currentTarget["task-body"].value = "";
     e.currentTarget["task-title"].value = "";
 
-
     onTaskCreated(newTask);
   };
 
@@ -45,7 +43,7 @@ function TaskCreator({ onTaskCreated }: ITaskCreator) {
         />
         <input
           id="task-body"
-          type="text" 
+          type="text"
           name="task-body"
           placeholder="Note Body"
         />
