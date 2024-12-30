@@ -14,9 +14,6 @@ interface ITaskCreator {
   onTaskCreated: (newTask: Task) => void;
 }
 function TaskCreator({ onTaskCreated }: ITaskCreator) {
-  const [taskTitle, setTaskTitle] = useState("");
-  const [taskBody, setTaskBody] = useState("");
-
   
   let onTaskSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,8 +27,10 @@ function TaskCreator({ onTaskCreated }: ITaskCreator) {
       type: TASK_TYPE.IN_PROGRESS,
       status: status ? TASK_STATUS.ARGENT : TASK_STATUS.NORMAL,
     };
-    setTaskTitle(""); 
-    setTaskBody(""); 
+    e.currentTarget["task-body"].value = "";
+    e.currentTarget["task-title"].value = "";
+
+
     onTaskCreated(newTask);
   };
 
@@ -42,14 +41,12 @@ function TaskCreator({ onTaskCreated }: ITaskCreator) {
           id="task-title"
           type="text"
           name="task-title"
-          value={taskTitle}
           placeholder="Note Title"
         />
         <input
           id="task-body"
           type="text" 
           name="task-body"
-          value={taskBody}
           placeholder="Note Body"
         />
         <input className="btn-submit" type="submit" />
