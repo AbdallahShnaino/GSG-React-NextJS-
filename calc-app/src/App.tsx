@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BUTTON_TYPE, calculateExpression } from "./types";
 import Viewer from "./components/viewer/viewer.component";
 import Button from "./components/button/button.component";
@@ -9,6 +9,7 @@ interface Btn {
   value: string;
 }
 function CalcBody() {
+  let startNewOperation: boolean = false;
   const btnsList: Btn[] = [
     {
       type: BUTTON_TYPE.NUMBER,
@@ -65,10 +66,23 @@ function CalcBody() {
   ];
   const [calcSentence, setCalcSentence] = useState<string>("");
   const [result, setResult] = useState<string>("");
+
+  useEffect(() => {
+    startNewOperation = true;
+  }, [result]);
+
   const onChangeCalcStatement = (value: string) => {
-    statementHost += value;
-    setCalcSentence(() => statementHost);
+    if (startNewOperation == false) {
+      statementHost += value;
+      setCalcSentence(() => statementHost);
+    } else {
+      statementHost = "";
+      statementHost += value;
+      setCalcSentence(() => statementHost);
+      startNewOperation = false;
+    }
   };
+
   const onGetResult = () => {
     let resultToView = calculateExpression(statementHost);
     setResult(() => resultToView.toString());
@@ -83,6 +97,7 @@ function CalcBody() {
             if (btn.type === BUTTON_TYPE.NUMBER) {
               return (
                 <Button
+                  key={btn.value}
                   onChangeCalcStatement={onChangeCalcStatement}
                   type={BUTTON_TYPE.NUMBER}
                   value={btn.value}
@@ -91,6 +106,7 @@ function CalcBody() {
             } else if (btn.type === BUTTON_TYPE.ACTION && btn.value === "=") {
               return (
                 <Button
+                  key={btn.value}
                   onGetResult={onGetResult}
                   type={BUTTON_TYPE.ACTION}
                   value={"="}
@@ -99,6 +115,7 @@ function CalcBody() {
             } else {
               return (
                 <Button
+                  key={btn.value}
                   onChangeCalcStatement={onChangeCalcStatement}
                   type={BUTTON_TYPE.ACTION}
                   value={btn.value}

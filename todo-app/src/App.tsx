@@ -18,6 +18,7 @@ function App() {
   let [taskList, setTaskList] = useState<Task[]>(TASKS_LIST);
   let [completedTasks, setCompletedTasks] = useState<number>(0);
   let [createdTasks, setCreatedTasks] = useState<number>(0);
+  
   let onTaskCreated = (newTask: Task) => {
     let newList = [...taskList, newTask];
     setTaskList(() => newList);
