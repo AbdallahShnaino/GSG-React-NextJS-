@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Task, TASK_STATUS, TASK_TYPE } from "../../types";
 import "./task-creator.component.css";
 
