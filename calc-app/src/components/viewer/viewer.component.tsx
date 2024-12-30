@@ -1,18 +1,16 @@
 import './viewer.component.css'
 
 export interface MathViewer {
-  statmentBody:string;
+  statementBody:string;
   result:string;
 }
-/*
-This component work as a show scrren not more 
-*/
+
 function Viewer (prop:MathViewer) {
-  let {statmentBody,result} = prop
+  let {statementBody,result} = prop
   return <div className='viewer'>
-    <span className='element'>{statmentBody}</span>
-    <span className='element equle'>{result==''?'':' = '}</span>
-    <span className='element result'>{result}</span>
+    <span>{statementBody}</span>
+    <span>{result==''?'':' = '}</span>
+    <span>{result}</span>
   </div>
 }
 export default Viewer

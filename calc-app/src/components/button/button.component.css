@@ -1,24 +1,42 @@
-.bg-color-num {
-    background: #7E1891;
+.btns-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  background-color: #fff;
 }
-.bg-color-action {
-    background: #FCC737;
+.btn {
+  flex: 1 1 calc(25% - 8px); /* Each button takes 25% width minus gap */
+  height: 60px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.btn{
-    width: 5%;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    margin: 0.2%;
-    color: #fff;
-    font-weight: bold;
-    font-size: large;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
+.btn:hover {
+  background-color: #0056b3;
 }
-.bg-color-result {
-    background: #8EB486;
-    width: 15%;
+
+.btn:active {
+  background-color: #003f8a;
+  transform: scale(0.98);
+}
+
+.btn.action {
+  background-color: #28a745;
+}
+
+.btn.number {
+  background-color: #17a2b8;
+}
+
+.btn.equals {
+  background-color: #ffc107;
+  flex: 1 1 calc(50% - 8px); /* Equal button takes more space */
 }
