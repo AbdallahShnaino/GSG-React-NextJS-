@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Task, TASK_STATUS, TASK_TYPE } from "../../types";
 import "./task-creator.component.css";
 
@@ -13,30 +14,41 @@ interface ITaskCreator {
   onTaskCreated: (newTask: Task) => void;
 }
 function TaskCreator({ onTaskCreated }: ITaskCreator) {
+  const [taskTitle, setTaskTitle] = useState<string>("");
+  const [taskBody, setTaskBody] = useState<string>("");
+  const [taskStatus, setTaskStatus] = useState<boolean>(false);
+
   let onTaskSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let taskTitle = e.currentTarget["task-title"].value;
-    let taskBody = e.currentTarget["task-body"].value;
-    let status = e.currentTarget["task-status"].checked;
     let newTask: Task = {
       id: generateUID(),
       title: taskTitle,
       body: taskBody,
       type: TASK_TYPE.IN_PROGRESS,
-      status: status ? TASK_STATUS.ARGENT : TASK_STATUS.NORMAL,
+      status: taskStatus ? TASK_STATUS.ARGENT : TASK_STATUS.NORMAL,
     };
-    e.currentTarget["task-body"].value = "";
-    e.currentTarget["task-title"].value = "";
-
     onTaskCreated(newTask);
+    setTaskTitle('')
+    setTaskBody('')
+    setTaskStatus(false)
   };
-
+  function handleTitleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTaskTitle(e.target.value);
+  }
+  function handleBodyChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTaskBody(e.target.value);
+  }
+  function handleStatusChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTaskStatus(e.target.checked);
+  }
   return (
     <>
       <form onSubmit={onTaskSubmit} className="task-creator-body">
         <input
           id="task-title"
           type="text"
+          value={taskTitle}
+          onChange={handleTitleChange}
           name="task-title"
           placeholder="Note Title"
         />
@@ -44,12 +56,19 @@ function TaskCreator({ onTaskCreated }: ITaskCreator) {
           id="task-body"
           type="text"
           name="task-body"
+          value={taskBody}
+          onChange={handleBodyChange}
           placeholder="Note Body"
         />
         <input className="btn-submit" type="submit" />
         <div className="completed-mark">
           Mark as argent
-          <input type="checkbox" name="task-status" />
+          <input
+            type="checkbox"
+            onChange={handleStatusChange}
+            checked={taskStatus}
+            name="task-status"
+          />
         </div>
       </form>
     </>
