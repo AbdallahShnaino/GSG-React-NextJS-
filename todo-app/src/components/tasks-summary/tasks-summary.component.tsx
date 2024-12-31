@@ -7,14 +7,14 @@ interface ITaskSummary {
 function TaskSummary({ completedTaskNum, createdTaskNum }: ITaskSummary) {
   return (
     <>
-      <div className="container">
+      <div className="statistics">
         <div className="block">
           <div>Number of Completed Tasks</div>
-          <div>{completedTaskNum}</div>
+          <div id="completedTaskNum">{completedTaskNum}</div>
         </div>
         <div className="block">
           <div>Number of Created Tasks</div>
-          <div>{createdTaskNum}</div>
+          <div id="createdTaskNum">{createdTaskNum}</div>
         </div>
       </div>
     </>

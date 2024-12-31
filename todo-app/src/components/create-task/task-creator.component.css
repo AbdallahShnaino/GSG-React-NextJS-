@@ -1,18 +1,50 @@
-.task-creator-body input {
-  display: block;
-  width: 100%;
+.input-container {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
 }
-.btn-submit {
-  background: #1d6340;
-  color: aliceblue;
-  border-radius: 5px;
-  margin: 20px 0;
-  padding: 5px 0;
+
+.input-container input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.input-container button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background: #6c63ff;
+  color: #fff;
   border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
 }
-#task-title,
-#task-body {
-  margin: 10px 0;
-  border-radius: 5px;
-  padding: 10px 5px;
+
+.input-container button:hover {
+  background: #554dcf;
+}
+
+.task.completed span {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.completed-mark {
+  display: flex;
+  align-items: center;
+  margin: 14px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.completed-mark input {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.completed-mark:hover {
+  color: #333;
 }

@@ -1,26 +1,126 @@
-.remove,
+remove,
 .completed-mark,
 .task-data {
   display: inline-block;
 }
 
 .card {
-  height: 40px;
+  height: auto;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  border: 1px solid green;
+  border: 1px solid #6c63ff;
   margin: 5px 20px;
+  padding: 10px;
+  word-wrap: break-word;
 }
+
 .remove img {
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
+
 .remove {
   background: transparent;
   border: none;
 }
+
 .title {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
+  margin-bottom: 5px;
+  word-wrap: break-word;
+}
+
+.body {
+  font-weight: normal;
+  font-size: 16px;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+.tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+}
+
+.task:last-child {
+  border-bottom: none;
+}
+
+span {
+  flex: 1;
+}
+
+.task .complete {
+  color: #28a745;
+  cursor: pointer;
+}
+
+.delete {
+  color: #dc3545;
+  cursor: pointer;
+  margin-left: 15px;
+  background: transparent;
+  border: none;
+}
+
+.task.completed span {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1em;
+  color: #555;
+  user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6c63ff;
+  border-radius: 4px;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: #6c63ff;
+  border-color: #554dcf;
+}
+
+.checkbox-container input[type="checkbox"]:checked::after {
+  content: "✔";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1em;
+}
+
+.checkbox-container:hover input[type="checkbox"] {
+  border-color: #554dcf;
+}
+
+.checkbox-container:hover {
+  color: #333;
 }

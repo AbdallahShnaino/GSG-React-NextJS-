@@ -14,34 +14,35 @@ function TaskInflator({
   return (
     <>
       {tasksList.map((task) => (
-        <div key={task.id} className="card">
-          <div className="completed-mark">
+        <div
+          key={task.id}
+          className="card"
+          style={{
+            borderColor: task.status == TASK_STATUS.ARGENT ? "red" : "#6c63ff",
+          }}
+        >
+          <div className="checkbox-container">
             <input
               type="checkbox"
-              name="task-status"
+              id="exampleCheckbox"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 onCompleteTask(task.id, e.target.checked);
               }}
             />
           </div>
+
           <div className="task-data">
             {task.status == 1 ? (
-              <div
-                style={{
-                  color: task.status == TASK_STATUS.ARGENT ? "red" : "inherit",
-                }}
-                className="title"
-              >
-                {task.title}
-              </div>
+              <div className="title">{task.title}</div>
             ) : (
               <div className="title">{task.title}</div>
             )}
 
             <div className="body">{task.body}</div>
           </div>
-          <button className="remove" onClick={(_) => onDeleteTask(task.id)}>
-            <img src="./../../../public/delete.png" alt="delete img" />
+
+          <button className="delete" onClick={(_) => onDeleteTask(task.id)}>
+            ✖
           </button>
         </div>
       ))}

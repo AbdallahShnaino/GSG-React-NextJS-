@@ -18,7 +18,7 @@ function App() {
   let [taskList, setTaskList] = useState<Task[]>(TASKS_LIST);
   let [completedTasks, setCompletedTasks] = useState<number>(0);
   let [createdTasks, setCreatedTasks] = useState<number>(0);
-  
+
   let onTaskCreated = (newTask: Task) => {
     let newList = [...taskList, newTask];
     setTaskList(() => newList);
@@ -48,17 +48,19 @@ function App() {
 
   return (
     <>
-      <div>{formattedDate}</div>
-      <TaskCreator onTaskCreated={onTaskCreated} />
-      <TaskSummary
-        completedTaskNum={completedTasks}
-        createdTaskNum={createdTasks}
-      />
-      <TaskInflator
-        onDeleteTask={onDeleteTask}
-        tasksList={taskList}
-        onCompleteTask={onCompleteTask}
-      />
+      <div className="todo-app">
+        <div className="header">To-Do App {formattedDate}</div>
+        <TaskCreator onTaskCreated={onTaskCreated} />
+        <TaskSummary
+          completedTaskNum={completedTasks}
+          createdTaskNum={createdTasks}
+        />
+        <TaskInflator
+          onDeleteTask={onDeleteTask}
+          tasksList={taskList}
+          onCompleteTask={onCompleteTask}
+        />
+      </div>
     </>
   );
 }

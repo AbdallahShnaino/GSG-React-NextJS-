@@ -28,9 +28,9 @@ function TaskCreator({ onTaskCreated }: ITaskCreator) {
       status: taskStatus ? TASK_STATUS.ARGENT : TASK_STATUS.NORMAL,
     };
     onTaskCreated(newTask);
-    setTaskTitle('')
-    setTaskBody('')
-    setTaskStatus(false)
+    setTaskTitle("");
+    setTaskBody("");
+    setTaskStatus(false);
   };
   function handleTitleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTaskTitle(e.target.value);
@@ -43,24 +43,32 @@ function TaskCreator({ onTaskCreated }: ITaskCreator) {
   }
   return (
     <>
-      <form onSubmit={onTaskSubmit} className="task-creator-body">
-        <input
-          id="task-title"
-          type="text"
-          value={taskTitle}
-          onChange={handleTitleChange}
-          name="task-title"
-          placeholder="Note Title"
-        />
-        <input
-          id="task-body"
-          type="text"
-          name="task-body"
-          value={taskBody}
-          onChange={handleBodyChange}
-          placeholder="Note Body"
-        />
-        <input className="btn-submit" type="submit" />
+      <form onSubmit={onTaskSubmit}>
+        <div className="input-container">
+          <input
+            id="task-title"
+            type="text"
+            value={taskTitle}
+            onChange={handleTitleChange}
+            name="task-title"
+            placeholder="Add the task title ..."
+          />
+        </div>
+        <div className="input-container">
+          <input
+            id="task-body"
+            type="text"
+            name="task-body"
+            value={taskBody}
+            onChange={handleBodyChange}
+            placeholder="Add the task Body ..."
+          />
+        </div>
+        <div className="input-container">
+          <button className="btn-submit" type="submit">
+            Add
+          </button>
+        </div>
         <div className="completed-mark">
           Mark as argent
           <input
