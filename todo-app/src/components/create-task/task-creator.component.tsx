@@ -61,7 +61,7 @@ function TaskCreator({ onTaskCreated }: ITaskCreator) {
             name="task-body"
             value={taskBody}
             onChange={handleBodyChange}
-            placeholder="Add the task Body ..."
+            placeholder="Add the task body ..."
           />
         </div>
         <div className="input-container">
